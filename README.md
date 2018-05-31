@@ -1,36 +1,34 @@
-# Simulation and Performance Evaluation Assignment 2
+# SPERF Assignment II
 
-### Installing
+## CONTENTS
 
-```sh
-git clone https://github.com/Naramsim/SPE-Assignment-2.git
-```
+<!-- TOC -->
 
-### Run
+- [SPERF Assignment II](#sperf-assignment-ii)
+    - [CONTENTS](#contents)
+    - [CONFIGURE](#configure)
+    - [RUN SIMULATOR](#run-simulator)
+    - [RUN MODEL](#run-model)
+    - [RUN ANALYSIS](#run-analysis)
 
-#### (Python already present | Python not installed) && R installed
-```sh
-make
-make run
-make model
+<!-- /TOC -->
 
-# To analyze data
-Rscript ./analysis/analyse.r
-```
+## CONFIGURE
 
-#### Containerized (Docker-compose installed)
-```sh
-docker-compose up -d
-docker exec -it ubuntu bash
-make
-make run
-make model
+- `pip install colorclass`
+- `pip install numpy`
+- `pip install terminaltables`
 
-# To analyze data in Rstudio
-# open localhost:8787  with usr:pass rstudio:rstudio
+## RUN SIMULATOR
 
-# To analyze data with R
-docker exec -it studio bash
-Rscript ./analysis/analyse.r
-```
+- `python run.py`
 
+## RUN MODEL
+
+- `python model/model.py`
+
+## RUN ANALYSIS
+
+- `Rscript analyse/analyse.r`
+
+If `dev.copy2pdf` throws an error, comment out all occurrences of that function in the `main` section of `analyse/analyse.r`.

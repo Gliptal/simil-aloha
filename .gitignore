@@ -1,6 +1,7 @@
 __pycache__
 .virtual_env
-.local
+
 .rstudio
 .vscode
-Rplots*.pdf
+
+.Rhistory
