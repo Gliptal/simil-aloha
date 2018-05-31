@@ -10,6 +10,7 @@ from scheduler import Scheduler
 from settings import NODES
 from node import Node
 
+
 ########
 # MAIN #
 ########
@@ -25,7 +26,7 @@ for point in settings.POINTS:
     NODES.append(Node(point[0], point[1]))
 
 for node in NODES:
-    node.find_neigbhours(NODES)
+    node.find_neighbours(NODES)
     node.generate_next_packet()
 
 # simulation

@@ -7,6 +7,7 @@ import numpy.random as distributions
 import settings
 import log
 
+
 #########
 # CLASS #
 #########
@@ -29,8 +30,10 @@ class Packet:
         if self.time != other.time:
             return self.time < other.time
         else:
-            return self.id < other.id                                                               # if the time is the same, discriminate
-                                                                                                    # using the incremental nature of the id
+            # if the time is the same, discriminate
+            # using the incremental nature of the id
+            return self.id < other.id
+
     def __str__(self):
         lines = ["",
                  log.format_color("- PACKET {} -".format(self.id), "cyan"),
