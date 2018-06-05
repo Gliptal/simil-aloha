@@ -101,7 +101,7 @@ for scale in range(3, 100, 1):
     scale = scale/1000
 
     LAMBDA = 1.314*scale
-    MU = 1 #1000000 / ((6914 - 32) / 2)
+    MU = 1
 
     transition_matrix = generate_matrix(states, LAMBDA, MU)
     Q = numpy.ones((states_num, states_num + 1))

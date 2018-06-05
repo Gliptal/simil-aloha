@@ -117,10 +117,10 @@ plot.model.throughput = function(model, simulator) {
     legend = c("model", "simulator")
 
     plot.new()
-    plot(model$load/PERCENT, model$prob, xlab=xLab, ylab=yLab, type="l", col=colors[1], xaxt="n", yaxt="n", xaxs="i", yaxs="i", xlim=c(0, 100), ylim=c(0, 60))
+    plot(model$load/PERCENT, model$prob, xlab=xLab, ylab=yLab, type="l", col=colors[1], xaxt="n", yaxt="n", xaxs="i", yaxs="i", xlim=c(0, 100), ylim=c(0, 14))
     lines(simulator$load/PERCENT, simulator$throughput/PERCENT, col=colors[2])
     axis(side=1, at=seq(0, 100, 20))
-    axis(side=2, at=seq(0, 60, 10))
+    axis(side=2, at=seq(0, 14, 2))
     legend("topright", legend=legend, lty=c(1, 1), col=colors, bty="n", cex=2.4)
 }
 
@@ -143,8 +143,8 @@ plot.model.packets = function(model, simulator) {
 # SETTINGS #
 #----------#
 
-ANALYSE_SYSTEM = FALSE
-ANALYSE_NODES  = FALSE
+ANALYSE_SYSTEM = TRUE
+ANALYSE_NODES  = TRUE
 ANALYSE_MODEL  = TRUE
 
 SPEED   = 1000000
@@ -197,7 +197,7 @@ if (ANALYSE_MODEL) {
     collision_rate = split(model.data, model.data$state)[['c']]
     transmission_rate = split(model.data, model.data$state)[['t']]
 
-    transmission_rate$prob = transmission_rate$prob*100
+    transmission_rate$prob = transmission_rate$prob*(transmission_rate$load/PERCENT)
     collision_rate$prob = collision_rate$prob*100
 
     plot.model.throughput(transmission_rate, sets)

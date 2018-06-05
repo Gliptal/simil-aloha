@@ -1,8 +1,6 @@
 .PHONY: configure
 configure:
-	pip install colorclass                 && \
-	pip install numpy                      && \
-	pip install terminaltables             && \
+	pip install -r requirements.txt
 
 .PHONY: simulate
 simulate:
