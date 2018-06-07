@@ -6,12 +6,19 @@
 
 - [SPERF Assignment II](#sperf-assignment-ii)
     - [CONTENTS](#contents)
+    - [REQUIREMENTS](#requirements)
     - [CONFIGURE](#configure)
     - [RUN SIMULATOR](#run-simulator)
     - [RUN MODEL](#run-model)
     - [RUN ANALYSIS](#run-analysis)
 
 <!-- /TOC -->
+
+## REQUIREMENTS
+
+- Python 3
+- Pip
+- Rscript
 
 ## CONFIGURE
 

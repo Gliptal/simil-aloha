@@ -15,8 +15,8 @@ plot.new = function() {
 }
 
 plot.scale = function(xData, yData) {
-    xLab = "scale"
-    yLab = "load (%)"
+    xLab = expression(rho)
+    yLab = expression(paste(theta, " (% MB/s)"))
 
     plot.new()
     plot(xData, yData/PERCENT, type="l", log="x", xlab=xLab, ylab=yLab, xaxt="n", xaxs="i", yaxs="i", xlim=c(10^-3.2, 0.1), ylim=c(0, 100))
@@ -24,8 +24,8 @@ plot.scale = function(xData, yData) {
 }
 
 plot.throughput = function(xData, yData) {
-    xLab = "load (%)"
-    yLab = "correct throughput (%)"
+    xLab = expression(paste(theta, " (% MB/s)"))
+    yLab = "correct throughput (% MB/s)"
 
     plot.new()
     plot(xData/PERCENT, yData/PERCENT, type="l", xlab=xLab, ylab=yLab, xaxt="n", yaxt="n", xaxs="i", yaxs="i", xlim=c(0, 100), ylim=c(0, 14))
@@ -34,8 +34,8 @@ plot.throughput = function(xData, yData) {
 }
 
 plot.relativethroughput = function(xData, yData) {
-    xLab = "load (%)"
-    yLab = "correct throughput (relative %)"
+    xLab = expression(paste(theta, " (% MB/s)"))
+    yLab = "correct throughput (relative % MB/s)"
 
     plot.new()
     plot(xData/PERCENT, (yData/PERCENT)*(100/(xData/PERCENT)), type="l", xlab=xLab, ylab=yLab, xaxt="n", yaxt="n", xaxs="i", yaxs="i", xlim=c(0, 100), ylim=c(0, 100))
@@ -44,7 +44,7 @@ plot.relativethroughput = function(xData, yData) {
 }
 
 plot.packets = function(xData, yData1, yData2) {
-    xLab = "load (%)"
+    xLab = expression(paste(theta, " (% MB/s)"))
     yLab = "packets collided (%)"
 
     plot.new()
@@ -55,7 +55,7 @@ plot.packets = function(xData, yData1, yData2) {
 
 plot.decision = function(xData, yData) {
     xLab = "packets collided (%)"
-    yLab = "correct throughput (%)"
+    yLab = "correct throughput (% MB/s)"
 
     plot.new()
     plot(xData, yData/PERCENT, type="l", xlab=xLab, ylab=yLab, xaxt="n", yaxt="n", xaxs="i", yaxs="i", xlim=c(0, 100), ylim=c(0, 14))
@@ -64,7 +64,7 @@ plot.decision = function(xData, yData) {
 }
 
 plot.node = function(xData, yData1, yData2, node) {
-    xLab = "load (%)"
+    xLab = expression(paste(theta, " (% MB/s)"))
     yLab = "packets collided (%)"
 
     plot.new()
@@ -74,8 +74,8 @@ plot.node = function(xData, yData1, yData2, node) {
 }
 
 boxplot.throughput = function(data) {
-    xLab = "load (%)"
-    yLab = "correct throughput (%)"
+    xLab = expression(paste(theta, " (% MB/s)"))
+    yLab = "correct throughput (% MB/s)"
 
     data$throughput = data$throughput/PERCENT
     data$load = data$load/PERCENT
@@ -87,7 +87,7 @@ boxplot.throughput = function(data) {
 }
 
 boxplot.packets = function(data) {
-    xLab = "load (%)"
+    xLab = expression(paste(theta, " (% MB/s)"))
     yLab = "packets collided (%)"
 
     data$load = data$load/PERCENT
@@ -99,7 +99,7 @@ boxplot.packets = function(data) {
 }
 
 boxplot.node = function(data, node) {
-    xLab = "load (%)"
+    xLab = expression(paste(theta, " (% MB/s)"))
     yLab = "packets collided (%)"
 
     data$load = data$load/PERCENT
@@ -111,8 +111,8 @@ boxplot.node = function(data, node) {
 }
 
 plot.model.throughput = function(model, simulator) {
-    xLab = "load (%)"
-    yLab = "correct throughput (%)"
+    xLab = expression(paste(theta, " (% MB/s)"))
+    yLab = "correct throughput (% MB/s)"
     colors = c("gray0", "gray")
     legend = c("model", "simulator")
 
