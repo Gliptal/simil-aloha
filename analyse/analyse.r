@@ -124,20 +124,6 @@ plot.model.throughput = function(model, simulator) {
     legend("topright", legend=legend, lty=c(1, 1), col=colors, bty="n", cex=2.4)
 }
 
-plot.model.packets = function(model, simulator) {
-    xLab = "load (%)"
-    yLab = "packets collided (%)"
-    colors = c("gray0", "gray")
-    legend = c("model", "simulator")
-
-    plot.new()
-    plot(model$load/PERCENT, model$prob, xlab=xLab, ylab=yLab, type="l", col=colors[1], xaxt="n", yaxt="n", xaxs="i", yaxs="i", xlim=c(0, 100), ylim=c(0, 100))
-    lines(simulator$load/PERCENT, simulator$collision, col=colors[2])
-    axis(side=1, at=seq(0, 100, 20))
-    axis(side=2, at=seq(0, 100, 20))
-    legend("bottomright", legend=legend, lty=c(1, 1), col=colors, bty="n", cex=2.4)
-}
-
 
 #----------#
 # SETTINGS #
@@ -198,10 +184,7 @@ if (ANALYSE_MODEL) {
     transmission_rate = split(model.data, model.data$state)[['t']]
 
     transmission_rate$prob = transmission_rate$prob*(transmission_rate$load/PERCENT)
-    collision_rate$prob = collision_rate$prob*100
 
     plot.model.throughput(transmission_rate, sets)
     dev.copy2pdf(file=paste0("./graphs/modelthroughput.pdf"), width=18, height=10.5)
-    plot.model.packets(collision_rate, sets)
-    dev.copy2pdf(file=paste0("./graphs/modelpackets.pdf"),    width=18, height=10.5)
 }
