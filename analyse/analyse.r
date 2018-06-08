@@ -130,7 +130,7 @@ plot.model.throughput = function(model, simulator) {
 #----------#
 
 ANALYSE_SYSTEM = TRUE
-ANALYSE_NODES  = TRUE
+ANALYSE_NODES  = c(1,6)
 ANALYSE_MODEL  = TRUE
 
 SPEED   = 1000000
@@ -161,18 +161,20 @@ if (ANALYSE_SYSTEM) {
     dev.copy2pdf(file="./graphs/decision.pdf",      width=18, height=10.5)
 }
 
-if (ANALYSE_NODES) {
+if (length(ANALYSE_NODES) != 0) {
     nodes.data = read.csv("./data/nodes.csv")
     nodes = split(nodes.data, nodes.data$node)
     index = 1
     for (node in nodes) {
-        set = aggregate(node[1:6], list(scale=node$scale), mean)
+        if (is.element(index, ANALYSE_NODES)) {
+            set = aggregate(node[1:6], list(scale=node$scale), mean)
 
-        plot.node(set$load, set$collision, set$lost, set$node[1])
-        dev.copy2pdf(file=paste0("./graphs/node", index, ".pdf"),    width=18, height=10.5)
-        boxplot.node(node, set$node[1])
-        dev.copy2pdf(file=paste0("./graphs/node", index, "bar.pdf"), width=18, height=10.5)
-        index = index + 1
+            plot.node(set$load, set$collision, set$lost, set$node[1])
+            dev.copy2pdf(file=paste0("./graphs/node", index, ".pdf"),    width=18, height=10.5)
+            boxplot.node(node, set$node[1])
+            dev.copy2pdf(file=paste0("./graphs/node", index, "bar.pdf"), width=18, height=10.5)
+        }
+    index = index + 1
     }
 }
 
