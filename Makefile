@@ -1,14 +1,14 @@
 .PHONY: configure
 configure:
-	pip install -r requirements.txt
+	pip3 install -r requirements.txt
 
 .PHONY: simulate
 simulate:
-	python ./run.py
+	python3 ./run.py
 
 .PHONY: model
 model:
-	python ./model/model.py
+	python3 ./model/model.py
 
 .PHONY: analyse
 analyse:

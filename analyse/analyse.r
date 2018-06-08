@@ -146,19 +146,19 @@ sets = aggregate(total.data[2:5], list(scale=total.data$scale), mean)
 
 if (ANALYSE_SYSTEM) {
     plot.scale(sets$scale, sets$load)
-    dev.copy2pdf(file="./graphs/scale.pdf",         width=18, height=10.5)
+    #dev.copy2pdf(file="./graphs/scale.pdf",         width=18, height=10.5)
     plot.relativethroughput(sets$load, sets$throughput)
-    dev.copy2pdf(file="./graphs/relative.pdf",      width=18, height=10.5)
+    #dev.copy2pdf(file="./graphs/relative.pdf",      width=18, height=10.5)
     plot.throughput(sets$load, sets$throughput)
-    dev.copy2pdf(file="./graphs/throughput.pdf",    width=18, height=10.5)
+    #dev.copy2pdf(file="./graphs/throughput.pdf",    width=18, height=10.5)
     boxplot.throughput(total.data)
-    dev.copy2pdf(file="./graphs/throughputbar.pdf", width=18, height=10.5)
+    #dev.copy2pdf(file="./graphs/throughputbar.pdf", width=18, height=10.5)
     plot.packets(sets$load, sets$collision, sets$lost)
-    dev.copy2pdf(file="./graphs/packets.pdf",       width=18, height=10.5)
+    #dev.copy2pdf(file="./graphs/packets.pdf",       width=18, height=10.5)
     boxplot.packets(total.data)
-    dev.copy2pdf(file="./graphs/packetsbar.pdf",    width=18, height=10.5)
+    #dev.copy2pdf(file="./graphs/packetsbar.pdf",    width=18, height=10.5)
     plot.decision(sets$collision, sets$throughput)
-    dev.copy2pdf(file="./graphs/decision.pdf",      width=18, height=10.5)
+    #dev.copy2pdf(file="./graphs/decision.pdf",      width=18, height=10.5)
 }
 
 if (length(ANALYSE_NODES) != 0) {
@@ -170,9 +170,9 @@ if (length(ANALYSE_NODES) != 0) {
             set = aggregate(node[1:6], list(scale=node$scale), mean)
 
             plot.node(set$load, set$collision, set$lost, set$node[1])
-            dev.copy2pdf(file=paste0("./graphs/node", index, ".pdf"),    width=18, height=10.5)
+            #dev.copy2pdf(file=paste0("./graphs/node", index, ".pdf"),    width=18, height=10.5)
             boxplot.node(node, set$node[1])
-            dev.copy2pdf(file=paste0("./graphs/node", index, "bar.pdf"), width=18, height=10.5)
+            #dev.copy2pdf(file=paste0("./graphs/node", index, "bar.pdf"), width=18, height=10.5)
         }
     index = index + 1
     }
@@ -188,5 +188,5 @@ if (ANALYSE_MODEL) {
     transmission_rate$prob = transmission_rate$prob*(transmission_rate$load/PERCENT)
 
     plot.model.throughput(transmission_rate, sets)
-    dev.copy2pdf(file=paste0("./graphs/modelthroughput.pdf"), width=18, height=10.5)
+    #dev.copy2pdf(file=paste0("./graphs/modelthroughput.pdf"), width=18, height=10.5)
 }
